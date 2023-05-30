@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <div class="step__wrapper" *ngFor="let step of steps index as i">
+        <div [ngClass]="currentStep==step ? 'step__count__active' :'step__count' "  >
+            {{i+1}}
+        </div>
+        <div class="step__name__wrapper">
+            <div class="step__number">
+                STEP {{i+1}}
+            </div>
+            <div class="step__name">
+                {{step}}
+            </div>
+        </div>
+    </div>
+</div>

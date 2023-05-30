@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <h1 class="title">Select your plan</h1>
+    <p class="subtitle">You have the option of monthly or yearly billing</p>
+    <div class="plans__wrapper">
+        <div   *ngFor="let plan of plans"  [ngClass]="currentPlan.title==plan.title ? 'plan__active' :'plan' " (click)="handleChangePlan(plan.title)"> 
+            <img [src]="plan.img" alt="icon" class="img">
+            <p class="title">
+                {{plan.title}}
+            </p>
+            <p class="subtitle">
+                ${{!isMonthly? plan.price +'/mo': plan.price*10+'/yr'}}
+            </p>
+            <p class="add__info" *ngIf="isMonthly">
+                2 mounths free
+            </p>
+        </div>
+       
+    </div>
+
+    <div class="checkbox__wrapper">
+        <p class="text">Monthly</p>
+        <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="!isMonthly" (change)="handleChangeCheckbox()">
+            <span class="slider"></span>
+        </label>
+        <p class="text">Yearly</p>
+    </div>
+    <div class="btns">
+        <button  class="btn_back" (click)="previousStep()">
+            Go Back
+        </button>
+        <button  type="submit" class="btn" (click)="secondStep()">
+            Next Step
+        </button>
+    </div>
+</div>

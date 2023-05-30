@@ -1,0 +1,53 @@
+<div class="wrapper">
+    <div class="confirm" *ngIf="isConfirm">
+        <img src="/assets/icon-thank-you.svg" alt="icon">
+        <div class="title">
+            Thank You!
+        </div>
+        <p class="subtitle">
+            Thanks for confirming your subscription! <br>
+            We hope you have fun using our platform, IF you ever need support, please feel free to ernail us at support@loremgaming.com.
+        </p>
+    </div>
+    <div *ngIf="!isConfirm">
+        <h1 class="title">Finishing up</h1>
+        <p class="subtitle">Double-check everything looks OK before confirming</p>
+        <div class="confirm__wrapper">
+        <div class="main">
+                <div class="text___wrapper">
+                    <div class="title">
+                        {{selectPlan.title }} {{isMonthly? '(Yearly)': '(Mounthly)'}}
+                    </div>
+                    <div class="subtitle" (click)="changePlan()">
+                        Change
+                    </div>
+                </div>
+                <p class="price">
+                    {{isMonthly? '$'+selectPlan.price*10+'/yr': '$'+selectPlan.price+'/mo'}}
+                </p>
+        </div>
+        <div  *ngFor="let addon of addOns" [ngClass]="addon.checked ? 'addons' :'none' ">
+                <div class="addon" >
+                    <p class="title">{{addon.title}}</p>
+                    <p class="price"> {{isMonthly? '$'+addon.price*10+'/yr': '$'+addon.price+'/mo'}}</p>
+                </div>
+        </div>
+        </div>
+        <div class="total">
+            <div class="title">
+                Total per year
+            </div>
+            <div class="price">
+                {{isMonthly? '$'+totalPrice*10+'/yr': '$'+totalPrice+'/mo'}}
+            </div>
+        </div>
+        <div class="btns">
+            <button  class="btn_back" (click)="previousStep()">
+                Go Back
+            </button>
+            <button  type="submit" class="btn" (click)="confirm()" >
+                Confirm
+            </button>
+        </div>
+    </div>
+</div>

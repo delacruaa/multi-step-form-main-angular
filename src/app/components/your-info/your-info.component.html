@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <h1 class="title">Personal Info</h1>
+    <p class="subtitle">Please Provide your name, email address, and number</p>
+    <form class="form" [formGroup]="form" (ngSubmit)="submitForm()" novalidate >
+        <div class="input__wrapper">
+            <p class="label">Name</p>
+            <input class="input" type="text"  autofocus  name="username" formControlName="username"  required placeholder="John">
+            <div *ngIf="submitted &&  form.get('username')?.invalid">
+                <div class="error" *ngIf="form.get('username')?.errors?.['required']">Username is required.</div>
+                <div class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username must be at least 3 characters long.</div>
+                <div class="error" *ngIf="form.get('username')?.errors?.['maxlength']">Username cannot exceed 10 characters.</div>
+            </div>
+        </div>
+        <div class="input__wrapper">
+            <p class="label">Email Address</p>
+            <input type="text" class="input"   name="email" formControlName="email" required  placeholder="John@gmail.com">
+            <div *ngIf="submitted && form.get('email')?.invalid ">
+                <div class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required.</div>
+                <div class="error" *ngIf="form.get('email')?.errors?.['email']">Invalid email format.</div>
+            </div>
+        </div>
+        <div class="input__wrapper">
+            <p class="label">Phone Number</p>
+            <input type="text" class="input" mask="+0 (000) 000-0000"   name="tel" formControlName="tel" required placeholder="+0 (000) 000-0000">
+            <div *ngIf="submitted &&  form.get('tel')?.invalid ">
+                <div class="error" *ngIf="form.get('tel')?.errors?.['required']">Tel is required.</div>
+                <div class="error" *ngIf="form.get('tel')?.errors?.['minlength']">Tel must be at least 11 characters long.</div>
+            </div>
+        </div>
+        <button  type="submit" class="btn" >
+            Next Step
+        </button>
+    </form>
+   
+</div>

@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <h1 class="title">Pick add-ons</h1>
+    <p class="subtitle">Add-ons help enhance your gaming experience</p>
+    <div class="addons__wrapper" >
+        <div class="addon" *ngFor="let addon of addOns"  [ngClass]="addon.checked ? 'addon__active' :'addon' " (click)="handleChangeCheckbox(addon.title)" >
+            <input type="checkbox" [checked]="addon.checked" >
+            <div class="text__wrapper">
+                <p class="title">{{addon.title}}</p>
+                <p class="subtitle">{{addon.subtitle}}</p>
+            </div>
+            <p class="price">+{{isMonthly? addon.price*10+'$/yr' :addon.price+'$/mo'}}</p>
+        </div>
+        
+    </div>  
+    <div class="btns">
+        <button  class="btn_back" (click)="previousStep()">
+            Go Back
+        </button>
+        <button  type="submit" class="btn" (click)="secondStep()">
+            Next Step
+        </button>
+    </div>
+</div>
