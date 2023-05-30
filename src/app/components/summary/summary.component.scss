@@ -121,7 +121,25 @@
                  
                 }
             }
-            
+            .addons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+                width: 100%;
+                .addon {
+                    display: flex;
+                    justify-content: space-between;
+                    .title {
+                        font-size: 14px;
+                        
+                    }
+                    .price {
+                        font-size: 14px;
+                        
+                    }
+                }
+            }
            
         }
         .total {
